@@ -1,12 +1,12 @@
 package bean;
 
-import com.sd.cloud.bean.common.BasePO;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -16,7 +16,24 @@ import java.util.Map;
  */
 @Entity
 @Table(name = "t_log")
-public class RequestLog extends BasePO implements Serializable{
+public class RequestLog implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	protected int id;
+
+	//创建日期
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
+	private Date create_date = new Date();
+
+	//创建人
+	@Column(columnDefinition = "varchar(20) NOT NULL DEFAULT 'sys'")
+	private String create_man = "sys";
+
+	//是否逻辑删除(0 未删除 1已删除)
+	@Column(columnDefinition = "bit NOT NULL DEFAULT 0")
+	private boolean deleted = false;
 	/**
 	 * 
 	 */
@@ -55,6 +72,38 @@ public class RequestLog extends BasePO implements Serializable{
     
     //返回参数
     private String resultParams;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getCreate_date() {
+		return create_date;
+	}
+
+	public void setCreate_date(Date create_date) {
+		this.create_date = create_date;
+	}
+
+	public String getCreate_man() {
+		return create_man;
+	}
+
+	public void setCreate_man(String create_man) {
+		this.create_man = create_man;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
 	public Integer getUser_id() {
 		return user_id;

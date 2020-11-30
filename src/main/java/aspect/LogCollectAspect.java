@@ -1,13 +1,8 @@
 package aspect;
 
-import com.sd.cloud.bean.security.Member;
-import com.sd.log.annotation.SystemRequestLog;
-import com.sd.log.bean.RequestLog;
-import com.sd.log.bean.enums.OperatorType;
-import com.sd.log.service.RequestLogService;
-import com.sd.log.util.InsertLogThread;
-import com.sd.log.util.LoggerUtil;
-import com.sd.log.util.UpdateLogThread;
+import annotation.SystemRequestLog;
+import bean.RequestLog;
+import bean.enums.OperatorType;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -17,12 +12,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.NamedThreadLocal;
 import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import service.RequestLogService;
+import util.InsertLogThread;
+import util.LoggerUtil;
+import util.UpdateLogThread;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.Map;
@@ -39,8 +39,8 @@ public class LogCollectAspect {
    private Logger log = LoggerFactory.getLogger(getClass());
    
    private static final ThreadLocal<RequestLog> logThreadLocal =  new NamedThreadLocal<RequestLog>("AspectLog");
-   
-   @Autowired(required=false)
+
+    @Autowired(required = false)
    HttpServletRequest request;
    
    @Autowired(required=false)
@@ -57,18 +57,18 @@ public class LogCollectAspect {
    //请求method前打印内容
    @Before(value = "RequestAspect()")
    public void methodBefore(JoinPoint joinPoint){
-      ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-      HttpServletRequest request = requestAttributes.getRequest();
-      HttpSession session = request.getSession();
-      Member member = (Member)session.getAttribute("member");
-      if(member != null){
-          RequestLog logObj = new RequestLog();
-          logObj.setCreate_date(new Date());
-          logObj.setOperater_username(member.getUsername());
-          logObj.setUser_id(member.getId());
-          logThreadLocal.set(logObj);
-          log.debug("@Before:日志拦截对象：{}",logObj.toString());
-      }
+       try {
+           UserDetails userDetails = (UserDetails) SecurityContextHolder
+                   .getContext().getAuthentication().getPrincipal();
+           String username = userDetails.getUsername();
+           RequestLog logObj = new RequestLog();
+           logObj.setCreate_date(new Date());
+           logObj.setOperater_username(username);
+           logThreadLocal.set(logObj);
+           log.debug("@Before:日志拦截对象：{}",logObj.toString());
+       } catch (Exception ex) {
+
+       }
    }
    
    @After("RequestAspect()")
