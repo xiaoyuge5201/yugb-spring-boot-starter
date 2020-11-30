@@ -1,0 +1,34 @@
+{
+  "properties": [
+    {
+      "name": "yugb.log.type",
+      "type": "java.lang.String",
+      "description": "数据库连接池",
+      "defaultValue": "com.alibaba.druid.pool.DruidDataSource"
+    },
+    {
+      "name": "yugb.log.url",
+      "type": "java.lang.String",
+      "description": "数据库连接地址",
+      "defaultValue": "${spring.datasource.url}"
+    },
+    {
+      "name": "yugb.log.username",
+      "type": "java.lang.String",
+      "description": "数据库类型",
+      "defaultValue": "${spring.datasource.username}"
+    },
+    {
+      "name": "yugb.log.password",
+      "type": "java.lang.String",
+      "description": "数据库连接面膜",
+      "defaultValue": "${spring.datasource.password}"
+    },
+    {
+      "name": "yugb.log.driverClassName",
+      "type": "java.lang.String",
+      "description": "数据库驱动类型",
+      "defaultValue": "com.mysql.jdbc.Driver"
+    }
+  ]
+}
