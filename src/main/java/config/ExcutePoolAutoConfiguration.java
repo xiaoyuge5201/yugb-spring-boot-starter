@@ -15,10 +15,10 @@ public class ExcutePoolAutoConfiguration {
     @Bean(name = "threadPoolTaskExecutor")
     public ThreadPoolTaskExecutor threadPoolTaskExecutor(ThreadPoolProperties poolProperties) {
         ThreadPoolTaskExecutor pool = new ThreadPoolTaskExecutor();
-        pool.setKeepAliveSeconds(poolProperties.getKeep_alive_seconds());
-        pool.setCorePoolSize(poolProperties.getCore_pool_size());
-        pool.setMaxPoolSize(poolProperties.getMax_pool_size());
-        pool.setQueueCapacity(poolProperties.getQueue_capacity());
+        pool.setKeepAliveSeconds(poolProperties.getKeepAliveSeconds());
+        pool.setCorePoolSize(poolProperties.getCorePoolSize());
+        pool.setMaxPoolSize(poolProperties.getMaxPoolSize());
+        pool.setQueueCapacity(poolProperties.getQueueCapacity());
         //队列满，线程被拒绝执行策略
         pool.setRejectedExecutionHandler(new java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy());
         return pool;
