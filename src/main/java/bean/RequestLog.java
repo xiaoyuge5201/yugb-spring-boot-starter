@@ -1,10 +1,7 @@
 package bean;
 
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.annotations.Type;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
@@ -14,30 +11,17 @@ import java.util.Map;
  * @author huzz
  *
  */
-@Entity
-@Table(name = "t_log")
 public class RequestLog implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	protected int id;
+	private static final long serialVersionUID = 1L;
 
 	//创建日期
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
-	private Date create_date = new Date();
+	private Date create_date;
 
 	//创建人
-	@Column(columnDefinition = "varchar(20) NOT NULL DEFAULT 'sys'")
-	private String create_man = "sys";
+	private String create_man;
 
-	//是否逻辑删除(0 未删除 1已删除)
-	@Column(columnDefinition = "bit NOT NULL DEFAULT 0")
-	private boolean deleted = false;
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private boolean deleted;
 
 	//用户ID
 	private Integer user_id;
@@ -55,10 +39,10 @@ public class RequestLog implements Serializable {
 	private String name;
 	
 	//请求地址
-	private String remoteAddr;            
+	private String remote_addr;
 	
 	//URI
-    private String requestUri;             
+    private String request_uri;
     
     //请求方式
     private String method;            
@@ -67,18 +51,13 @@ public class RequestLog implements Serializable {
     private String params;          
     
     //异常
-	@Type(type="text")
-    private String exception;           
-    
-    //返回参数
-    private String resultParams;
+	private String exception;
 
-	public int getId() {
-		return id;
+	public RequestLog() {
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 
 	public Date getCreate_date() {
@@ -128,7 +107,7 @@ public class RequestLog implements Serializable {
 	public void setOperater_type(String operater_type) {
 		this.operater_type = operater_type;
 	}
-	
+
 	public String getLog_type() {
 		return log_type;
 	}
@@ -145,20 +124,20 @@ public class RequestLog implements Serializable {
 		this.name = name;
 	}
 
-	public String getRemoteAddr() {
-		return remoteAddr;
+	public String getRemote_addr() {
+		return remote_addr;
 	}
 
-	public void setRemoteAddr(String remoteAddr) {
-		this.remoteAddr = remoteAddr;
+	public void setRemote_addr(String remote_addr) {
+		this.remote_addr = remote_addr;
 	}
 
-	public String getRequestUri() {
-		return requestUri;
+	public String getRequest_uri() {
+		return request_uri;
 	}
 
-	public void setRequestUri(String requestUri) {
-		this.requestUri = requestUri;
+	public void setRequest_uri(String request_uri) {
+		this.request_uri = request_uri;
 	}
 
 	public String getMethod() {
@@ -176,9 +155,8 @@ public class RequestLog implements Serializable {
 	public void setParams(String params) {
 		this.params = params;
 	}
-	
 
-    /**
+	/**
      * 设置请求参数
      * @param paramMap
      */
@@ -203,21 +181,22 @@ public class RequestLog implements Serializable {
 		this.exception = exception;
 	}
 
-	public String getResultParams() {
-		return resultParams;
-	}
-
-	public void setResultParams(String resultParams) {
-		this.resultParams = resultParams;
-	}
-
 	@Override
 	public String toString() {
-		return "Log [user_id=" + user_id + ", operater_username=" + operater_username + ", operater_type="
-				+ operater_type + ", log_type=" + log_type + ", name=" + name + ", remoteAddr=" + remoteAddr
-				+ ", requestUri=" + requestUri + ", method=" + method + ", params=" + params + ", exception="
-				+ exception + ", resultParams=" + resultParams + "]";
+		return "RequestLog{" +
+				"create_date=" + create_date +
+				", create_man='" + create_man + '\'' +
+				", deleted=" + deleted +
+				", user_id=" + user_id +
+				", operater_username='" + operater_username + '\'' +
+				", operater_type='" + operater_type + '\'' +
+				", log_type='" + log_type + '\'' +
+				", name='" + name + '\'' +
+				", remote_addr='" + remote_addr + '\'' +
+				", request_uri='" + request_uri + '\'' +
+				", method='" + method + '\'' +
+				", params='" + params + '\'' +
+				", exception='" + exception + '\'' +
+				'}';
 	}
-	
-	
 }

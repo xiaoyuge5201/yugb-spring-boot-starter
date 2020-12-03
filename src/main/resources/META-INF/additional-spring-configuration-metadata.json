@@ -1,12 +1,6 @@
 {
   "properties": [
     {
-      "name": "yugb.log.type",
-      "type": "java.lang.String",
-      "description": "数据库连接池",
-      "defaultValue": "com.alibaba.druid.pool.DruidDataSource"
-    },
-    {
       "name": "yugb.log.url",
       "type": "java.lang.String",
       "description": "数据库连接地址",
@@ -29,6 +23,30 @@
       "type": "java.lang.String",
       "description": "数据库驱动类型",
       "defaultValue": "com.mysql.jdbc.Driver"
+    },
+    {
+      "name": "yugb.thread.core_pool_size",
+      "type": "java.lang.Integer",
+      "description": "核心线程池数",
+      "defaultValue": 10
+    },
+    {
+      "name": "yugb.thread.max_pool_size",
+      "type": "java.lang.Integer",
+      "description": "最大线程",
+      "defaultValue": 20
+    },
+    {
+      "name": "yugb.thread.queue_capacity",
+      "type": "java.lang.Integer",
+      "description": "队列容量",
+      "defaultValue": 1000
+    },
+    {
+      "name": "yugb.thread.keep_alive_seconds",
+      "type": "java.lang.Integer",
+      "description": "存货时间",
+      "defaultValue": 300
     }
   ]
 }

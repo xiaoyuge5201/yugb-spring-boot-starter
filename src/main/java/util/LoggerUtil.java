@@ -6,11 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 工具類
+ * 用于获取请求的ip信息
+ * @author yugb
  */
 public class LoggerUtil {
-    public static final String LOG_TARGET_TYPE = "targetType";
-    public static final String LOG_ACTION = "action";
-    public static final String LOG_REMARK = "remark";
 
     public LoggerUtil() {
     }
@@ -18,8 +17,8 @@ public class LoggerUtil {
     /**
      * 获取客户端ip地址
      *
-     * @param request
-     * @return
+     * @param request 請求
+     * @return ip
      */
     public static String getCliectIp(HttpServletRequest request) {
         String ip = request.getHeader("X-Real-IP");
@@ -39,5 +38,4 @@ public class LoggerUtil {
             return request.getRemoteAddr();
         }
     }
-
 }

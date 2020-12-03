@@ -1,5 +1,0 @@
-threadpool:
-  core-pool-size: 5
-  max-pool-size: 10
-  queue-capacity: 100
-  keep-alive-seconds: 120

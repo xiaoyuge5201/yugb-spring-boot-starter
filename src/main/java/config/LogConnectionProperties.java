@@ -8,9 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @create: 2020-07-01 09:27
  **/
 @ConfigurationProperties(prefix = "yugb.log")
-public class OperationLogProperties {
-
-    private String type;
+public class LogConnectionProperties {
 
     private String url;
 
@@ -19,14 +17,6 @@ public class OperationLogProperties {
     private String password;
 
     private String driverClassName;
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getUrl() {
         return url;
