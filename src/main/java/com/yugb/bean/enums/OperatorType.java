@@ -1,4 +1,4 @@
-package bean.enums;
+package com.yugb.bean.enums;
 
 public enum OperatorType {
 	Create,//创建

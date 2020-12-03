@@ -1,8 +1,8 @@
-package dao;
+package com.yugb.dao;
 
-import bean.RequestLog;
+import com.yugb.bean.RequestLog;
 import org.springframework.stereotype.Repository;
-import util.JdbcClient;
+import com.yugb.util.JdbcClient;
 
 import java.sql.*;
 

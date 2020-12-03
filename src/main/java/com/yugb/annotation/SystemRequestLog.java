@@ -1,7 +1,7 @@
-package annotation;
+package com.yugb.annotation;
 
 
-import bean.enums.OperatorType;
+import com.yugb.bean.enums.OperatorType;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;

@@ -1,6 +1,6 @@
-package util;
+package com.yugb.util;
 
-import config.LogConnectionProperties;
+import com.yugb.config.LogConnectionProperties;
 
 import java.sql.*;
 

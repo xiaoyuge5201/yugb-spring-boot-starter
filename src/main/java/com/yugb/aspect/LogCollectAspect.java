@@ -1,9 +1,11 @@
-package aspect;
+package com.yugb.aspect;
 
-import annotation.SystemRequestLog;
-import bean.RequestLog;
-import bean.enums.OperatorType;
-import dao.RequestLogDao;
+import com.yugb.annotation.SystemRequestLog;
+import com.yugb.bean.RequestLog;
+import com.yugb.bean.enums.OperatorType;
+import com.yugb.dao.RequestLogDao;
+import com.yugb.util.InsertLogThread;
+import com.yugb.util.LoggerUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -14,8 +16,6 @@ import org.springframework.core.NamedThreadLocal;
 import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
-import util.InsertLogThread;
-import util.LoggerUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -47,7 +47,7 @@ public class LogCollectAspect {
    
    //申明一个切点 里面是 execution表达式
    @Pointcut("@annotation(annotation.SystemRequestLog)")
-   private void RequestAspect(){}
+   public void RequestAspect(){}
  
  
    //请求method前打印内容
@@ -59,7 +59,7 @@ public class LogCollectAspect {
            logThreadLocal.set(logObj);
            logger.debug("@Before:日志拦截对象：{}", logObj.toString());
        } catch (Exception ex) {
-
+           ex.printStackTrace();
        }
    }
    

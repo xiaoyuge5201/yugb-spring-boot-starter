@@ -1,4 +1,4 @@
-package bean;
+package com.yugb.bean;
 
 import org.apache.commons.lang3.StringUtils;
 

@@ -1,4 +1,4 @@
-package config;
+package com.yugb.config;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
