@@ -10,6 +10,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -46,7 +51,32 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>
+        </dependency>
     </dependencies>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <tag>master</tag>
+        <url>git@github.com:cloudnil/marathon-client.git</url>
+        <connection>scm:git:git@github.com:cloudnil/marathon-client.git</connection>
+        <developerConnection>scm:git:git@github.com:cloudnil/marathon-client.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>yugb666</name>
+            <email>yugb666@foxmail.com</email>
+            <organization>xiaoyuge</organization>
+        </developer>
+    </developers>
     <repositories>
         <repository>
             <id>ali</id>

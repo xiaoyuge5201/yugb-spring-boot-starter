@@ -35,4 +35,9 @@ public @interface YgbLog {
      * @return
      */
     String username();
+    /**
+     * 用户id
+     * @return
+     */
+    int userId();
 }

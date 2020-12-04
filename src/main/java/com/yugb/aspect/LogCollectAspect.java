@@ -1,6 +1,7 @@
 package com.yugb.aspect;
 
 import com.yugb.annotation.YgbLog;
+import com.yugb.bean.MemberDTO;
 import com.yugb.bean.RequestLog;
 import com.yugb.bean.enums.OperatorType;
 import com.yugb.dao.RequestLogDao;
@@ -19,7 +20,9 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -146,4 +149,77 @@ public class LogCollectAspect {
         logObject.setOperater_username(ygbLog.username());
         return logObject;
    }
+
+
+    /**
+     * 获取注解中传递的动态参数的参数值
+     *
+     * @param joinPoint
+     * @param name
+     * @return
+     */
+    public String getAnnotationValue(JoinPoint joinPoint, String name) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        String paramName = name;
+        // 获取方法中所有的参数
+        Map<String, Object> params = getParams(joinPoint);
+        // 参数是否是动态的:#{paramName}
+        if (paramName.matches("^#\\{\\D*\\}")) {
+            // 获取参数名
+            paramName = paramName.replace("#{", "").replace("}", "");
+            // 是否是复杂的参数类型:对象.参数名
+            if (paramName.contains(".")) {
+                String[] split = paramName.split("\\.");
+                // 获取方法中对象的内容
+                Object object = getValue(params, split[0]);
+                // 转换为JsonObject
+                if(object != null){
+                    MemberDTO dto = new MemberDTO();
+                    PropertyUtils.copyProperties(dto, object);
+                    //MemberTest memberTest = JSON.parseObject((MemberTest)object.toString(),MemberTest.class);
+                    // 获取值
+                   /* Object o = jsonObject.get(split[1]);
+                    return String.valueOf(o);*/
+                    return null;
+                }
+                return null;
+            }
+            // 简单的动态参数直接返回
+            return String.valueOf(getValue(params, paramName));
+        }
+        // 非动态参数直接返回
+        return name;
+    }
+
+    /**
+     * 根据参数名返回对应的值
+     *
+     * @param map
+     * @param paramName
+     * @return
+     */
+    public Object getValue(Map<String, Object> map, String paramName) {
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            if (entry.getKey().equals(paramName)) {
+                return entry.getValue();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取方法的参数名和值
+     *
+     * @param joinPoint
+     * @return
+     */
+    public Map<String, Object> getParams(JoinPoint joinPoint) {
+        Map<String, Object> params = new HashMap<>(8);
+        Object[] args = joinPoint.getArgs();
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        String[] names = signature.getParameterNames();
+        for (int i = 0; i < args.length; i++) {
+            params.put(names[i], args[i]);
+        }
+        return params;
+    }
 }
