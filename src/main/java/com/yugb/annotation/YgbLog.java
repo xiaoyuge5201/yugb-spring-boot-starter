@@ -16,7 +16,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface LogYgb {
+public @interface YgbLog {
 
     /**
      * 日志记录的事件名称，自定义业务名称或特定名称都行
