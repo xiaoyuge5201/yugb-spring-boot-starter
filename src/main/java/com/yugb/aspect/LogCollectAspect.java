@@ -1,9 +1,10 @@
 package com.yugb.aspect;
 
-import com.yugb.annotation.SystemRequestLog;
+import com.yugb.annotation.LogYgb;
 import com.yugb.bean.RequestLog;
 import com.yugb.bean.enums.OperatorType;
 import com.yugb.dao.RequestLogDao;
+import com.yugb.util.DateUtils;
 import com.yugb.util.InsertLogThread;
 import com.yugb.util.LoggerUtil;
 import org.aspectj.lang.JoinPoint;
@@ -46,7 +47,7 @@ public class LogCollectAspect {
     private RequestLogDao requestLogDao;
    
    //申明一个切点 里面是 execution表达式
-   @Pointcut("@annotation(annotation.SystemRequestLog)")
+   @Pointcut("@annotation(com.yugb.annotation.LogYgb)")
    public void RequestAspect(){}
  
  
@@ -55,7 +56,7 @@ public class LogCollectAspect {
    public void methodBefore() {
        try {
            RequestLog logObj = new RequestLog();
-           logObj.setCreate_date(new Date());
+           logObj.setCreate_date(DateUtils.formatToYmdhms());
            logThreadLocal.set(logObj);
            logger.debug("@Before:日志拦截对象：{}", logObj.toString());
        } catch (Exception ex) {
@@ -111,8 +112,8 @@ public class LogCollectAspect {
     public static RequestLog getTypeInfo(JoinPoint point, RequestLog logObject) {
 	   MethodSignature signature = (MethodSignature)point.getSignature();
 	   Method method = signature.getMethod();
-	   SystemRequestLog systemRequestLog = method.getAnnotation(SystemRequestLog.class);
-	   OperatorType type = systemRequestLog.type();
+	   LogYgb logYgb = method.getAnnotation(LogYgb.class);
+	   OperatorType type = logYgb.type();
 	   switch(type) {
            case Create:
                logObject.setOperater_type("增加操作");
@@ -142,8 +143,8 @@ public class LogCollectAspect {
                logObject.setOperater_type("指令下发操作");
                break;
        }
-        logObject.setName(systemRequestLog.name());
-        logObject.setOperater_username(systemRequestLog.username());
+        logObject.setName(logYgb.name());
+        logObject.setOperater_username(logYgb.username());
         return logObject;
    }
 }

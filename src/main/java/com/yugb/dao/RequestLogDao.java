@@ -1,10 +1,13 @@
 package com.yugb.dao;
 
 import com.yugb.bean.RequestLog;
-import org.springframework.stereotype.Repository;
 import com.yugb.util.JdbcClient;
+import org.springframework.stereotype.Repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * 源数据源的Dao操作
@@ -39,7 +42,7 @@ public class RequestLogDao {
         try {
             conn = JdbcClient.getConnection();
             prep = conn.prepareStatement(sql);
-            prep.setDate(1, (Date) requestLog.getCreate_date());
+            prep.setString(1, requestLog.getCreate_date());
             prep.setString(2, requestLog.getCreate_man());
             prep.setBoolean(3, false);
             prep.setInt(4, requestLog.getUser_id());

@@ -16,14 +16,20 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface SystemRequestLog {
+public @interface LogYgb {
 
-    //日志记录的事件名称，自定义业务名称或特定名称都行
+    /**
+     * 日志记录的事件名称，自定义业务名称或特定名称都行
+     *
+     * @return
+     */
     String name();
 
-    //操作类型，增删改查
+    /**
+     * 操作类型，增删改查
+     * @return
+     */
     OperatorType type();
-
     /**
      * 操作用户名
      * @return

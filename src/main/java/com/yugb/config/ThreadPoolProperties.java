@@ -24,7 +24,7 @@ public class ThreadPoolProperties {
     /**
      * 存货时间
      */
-    private int keepAliveSeconds = 300;
+    private int keepAliveSeconds = 5000;
 
     public int getCorePoolSize() {
         return corePoolSize;

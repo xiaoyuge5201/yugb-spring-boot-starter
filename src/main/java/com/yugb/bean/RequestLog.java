@@ -3,7 +3,6 @@ package com.yugb.bean;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -16,7 +15,7 @@ public class RequestLog implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	//创建日期
-	private Date create_date;
+	private String create_date;
 
 	//创建人
 	private String create_man;
@@ -60,11 +59,11 @@ public class RequestLog implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Date getCreate_date() {
+	public String getCreate_date() {
 		return create_date;
 	}
 
-	public void setCreate_date(Date create_date) {
+	public void setCreate_date(String create_date) {
 		this.create_date = create_date;
 	}
 
