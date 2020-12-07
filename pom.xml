@@ -66,12 +66,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <scm>
-        <tag>master</tag>
-        <url>git@github.com:cloudnil/marathon-client.git</url>
-        <connection>scm:git:git@github.com:cloudnil/marathon-client.git</connection>
-        <developerConnection>scm:git:git@github.com:cloudnil/marathon-client.git</developerConnection>
-    </scm>
     <developers>
         <developer>
             <name>yugb666</name>
