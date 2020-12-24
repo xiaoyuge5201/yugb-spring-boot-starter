@@ -1,9 +1,9 @@
-package com.yugb.config;
+package com.github.yugb.config;
 
+import com.github.yugb.util.JdbcClient;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.yugb.util.JdbcClient;
 
 /**
  * @author: 小余哥

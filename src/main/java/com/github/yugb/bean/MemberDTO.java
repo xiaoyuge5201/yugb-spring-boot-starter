@@ -1,4 +1,4 @@
-package com.yugb.bean;
+package com.github.yugb.bean;
 
 public class MemberDTO {
     private Integer id;

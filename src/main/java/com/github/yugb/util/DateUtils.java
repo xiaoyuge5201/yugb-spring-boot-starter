@@ -1,4 +1,4 @@
-package com.yugb.util;
+package com.github.yugb.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

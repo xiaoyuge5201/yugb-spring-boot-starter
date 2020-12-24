@@ -1,7 +1,7 @@
-package com.yugb.util;
+package com.github.yugb.util;
 
-import com.yugb.bean.RequestLog;
-import com.yugb.dao.RequestLogDao;
+import com.github.yugb.bean.RequestLog;
+import com.github.yugb.dao.RequestLogDao;
 
 /**
  * 更新线程

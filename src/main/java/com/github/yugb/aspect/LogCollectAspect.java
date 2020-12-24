@@ -1,15 +1,15 @@
-package com.yugb.aspect;
+package com.github.yugb.aspect;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.yugb.annotation.YgbLog;
-import com.yugb.bean.MemberDTO;
-import com.yugb.bean.RequestLog;
-import com.yugb.bean.enums.OperatorType;
-import com.yugb.dao.RequestLogDao;
-import com.yugb.util.DateUtils;
-import com.yugb.util.InsertLogThread;
-import com.yugb.util.LoggerUtil;
+import com.github.yugb.bean.MemberDTO;
+import com.github.yugb.bean.RequestLog;
+import com.github.yugb.dao.RequestLogDao;
+import com.github.yugb.util.DateUtils;
+import com.github.yugb.util.InsertLogThread;
+import com.github.yugb.util.LoggerUtil;
+import com.github.yugb.annotation.YgbLog;
+import com.github.yugb.bean.enums.OperatorType;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
