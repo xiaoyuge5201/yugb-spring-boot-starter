@@ -6,7 +6,10 @@
 
     <groupId>com.github.xiaoyuge5201</groupId>
     <artifactId>yugb-spring-boot-starter</artifactId>
-    <version>1.0.RELEASE</version>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <description>A demo for Log</description>
+    <url>https://github.com/xiaoyuge5201/yugb-spring-boot-starter</url>
     <properties>
         <!--project-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,21 +77,26 @@
     </dependencies>
     <licenses>
         <license>
-            <name>The Apache Software License, Version 2.0</name>
+            <name>The Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/rxyor/carp</url>
-        <connection>scm:git:https://github.com/rxyor/carp.git</connection>
-        <developerConnection>scm:git:https://github.com/rxyor/carp</developerConnection>
+        <connection>scm:git:git://github.com/xiaoyuge5201/yugb-spring-boot-starter.git</connection>
+        <developerConnection>scm:git:ssh://github.com/xiaoyuge5201/yugb-spring-boot-starter.git</developerConnection>
+        <url>https://github.com/xiaoyuge5201/yugb-spring-boot-starter/master</url>
     </scm>
     <developers>
         <developer>
             <name>yugb666</name>
             <email>yugb666@foxmail.com</email>
             <organization>xiaoyuge</organization>
+        </developer>
+        <developer>
+            <name>xiaoyuge</name>
+            <email>yugb666@foxmail.com</email>
+            <organization>Yugb5201314.</organization>
+            <organizationUrl>http://www.sonatype.com</organizationUrl>
         </developer>
     </developers>
     <profiles>
