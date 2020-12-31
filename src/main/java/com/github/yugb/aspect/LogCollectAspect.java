@@ -117,7 +117,7 @@ public class LogCollectAspect {
      *
      * @param point
      * @param logObject
-     * @return
+     * @return 返回结果
      */
     public static RequestLog getTypeInfo(JoinPoint point, RequestLog logObject) {
         MethodSignature signature = (MethodSignature) point.getSignature();
@@ -166,7 +166,7 @@ public class LogCollectAspect {
      *
      * @param joinPoint
      * @param name
-     * @return
+     * @return 返回结果
      */
     public String getAnnotationValue(JoinPoint joinPoint, String name) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         String paramName = name;
@@ -199,7 +199,7 @@ public class LogCollectAspect {
     /**
      * @param joinPoint
      * @param name
-     * @return
+     * @return 返回结果
      */
     public RequestLog getUserInfoByAnnotation(JoinPoint joinPoint, String name, RequestLog logObject) {
         String paramName = name;
@@ -237,7 +237,7 @@ public class LogCollectAspect {
      *
      * @param map
      * @param paramName
-     * @return
+     * @return 返回结果
      */
     public Object getValue(Map<String, Object> map, String paramName) {
         for (Map.Entry<String, Object> entry : map.entrySet()) {
@@ -252,7 +252,7 @@ public class LogCollectAspect {
      * 获取方法的参数名和值
      *
      * @param joinPoint
-     * @return
+     * @return 返回结果
      */
     public Map<String, Object> getParams(JoinPoint joinPoint) {
         Map<String, Object> params = new HashMap<String, Object>(8);

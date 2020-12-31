@@ -21,23 +21,23 @@ public @interface YgbLog {
     /**
      * 日志记录的事件名称，自定义业务名称或特定名称都行
      *
-     * @return
+     * @return 返回结果
      */
     String name();
 
     /**
      * 操作类型，增删改查
-     * @return
+     * @return 返回结果
      */
     OperatorType type();
     /**
      * 操作用户名
-     * @return
+     * @return 返回结果
      */
     String username();
     /**
      * 用户id
-     * @return
+     * @return 返回结果
      */
     int userId();
 }

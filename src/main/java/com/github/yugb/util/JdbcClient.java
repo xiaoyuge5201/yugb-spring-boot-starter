@@ -30,7 +30,7 @@ public class JdbcClient {
     /**
      * 构造实例
      *
-     * @return
+     * @return 返回结果
      */
     public static JdbcClient create(LogConnectionProperties properties) {
         JdbcClient jdbcClient = new JdbcClient(properties);
@@ -39,7 +39,7 @@ public class JdbcClient {
 
     /**
      * 获取连接
-     * @return 连接
+     * @return 返回结果 连接
      */
     public static Connection getConnection() {
         try {

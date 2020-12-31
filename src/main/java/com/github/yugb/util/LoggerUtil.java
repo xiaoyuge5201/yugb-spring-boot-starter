@@ -18,7 +18,7 @@ public class LoggerUtil {
      * 获取客户端ip地址
      *
      * @param request 請求
-     * @return ip
+     * @return 返回结果 ip
      */
     public static String getCliectIp(HttpServletRequest request) {
         String ip = request.getHeader("X-Real-IP");
