@@ -2,7 +2,6 @@ package com.github.yugb.annotation;
 
 
 import com.github.yugb.bean.enums.OperatorType;
-import com.github.yugb.config.LogConnectionAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -12,11 +11,10 @@ import java.lang.annotation.*;
  *
  * @author xiaoyuge
  */
-
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(LogConnectionAutoConfiguration.class)
+@Import({YgbLogRegistrar.class})
 public @interface YgbLog {
 
     /**
