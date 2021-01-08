@@ -2,38 +2,35 @@ package com.github.yugb.annotation;
 
 
 import com.github.yugb.bean.enums.OperatorType;
-import org.springframework.stereotype.Component;
+import com.github.yugb.config.LogConnectionAutoConfiguration;
+import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
 /**
  * 日志拦截注解
  *
- * @author hzz
+ * @author xiaoyuge
  */
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Component
+@Import(LogConnectionAutoConfiguration.class)
 public @interface YgbLog {
 
     /**
-     * 模块名称
-     *
-     * @return 返回结果
+     * @return 模块名称
      */
     String module() default "";
 
     /**
-     * 描述
-     * @return
+     * @return 描述
      */
     String desc() default "";
 
     /**
-     * 操作类型，增删改查
-     * @return 返回结果
+     * @return 操作类型，增删改查
      */
     OperatorType type();
 }

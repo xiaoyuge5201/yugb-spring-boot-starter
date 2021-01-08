@@ -1,6 +1,7 @@
 package com.github.yugb.config;
 
 import com.github.yugb.util.JdbcClient;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @create: 2020-07-01 09:29
  **/
 @Configuration
+@ConditionalOnWebApplication
 @EnableConfigurationProperties(LogConnectionProperties.class)
 public class LogConnectionAutoConfiguration {
 

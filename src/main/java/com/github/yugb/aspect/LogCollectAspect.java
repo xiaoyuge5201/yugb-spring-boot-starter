@@ -9,7 +9,6 @@ import com.github.yugb.dao.RequestLogDao;
 import com.github.yugb.util.DateUtils;
 import com.github.yugb.util.InsertLogThread;
 import com.github.yugb.util.LoggerUtil;
-import org.apache.commons.beanutils.PropertyUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -24,15 +23,13 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * log采集，记录某些比较重要的用户请求并存入到数据库
- *
- * @author hzz
+ * 记录某些比较重要的用户请求并存入到数据库
+ * @author xiaoyuge
  */
 @Aspect
 @Component
@@ -57,6 +54,7 @@ public class LogCollectAspect {
      */
     @Pointcut("@annotation(com.github.yugb.annotation.YgbLog)")
     public void RequestAspect() {
+        System.out.println("-----point cut----");
     }
 
 
