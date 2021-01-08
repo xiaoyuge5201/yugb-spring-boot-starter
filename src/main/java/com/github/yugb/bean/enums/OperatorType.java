@@ -1,16 +1,52 @@
 package com.github.yugb.bean.enums;
 
 public enum OperatorType {
-	Create,//创建
-	Delete,//删除
-	Update,//更新
-	Retrieve,//检索
-	LOGIN,//登录
-	DownLoad,//导出下载
-	UpLoad,//上传
-	COMMAND,//指令下发
-	PAGE,//访问页面内容
-	API,	//接口调用
-	TOKEN,	//获取token
-	CHECK 	//验证
+	/**
+	 * 创建
+	 */
+	Create,
+	/**
+	 * 删除
+	 */
+	Delete,
+	/**
+	 * 更新
+	 */
+	Update,
+	/**
+	 * 检索
+	 */
+	Retrieve,
+	/**
+	 * 登录
+	 */
+	LOGIN,
+	/**
+	 * 导出下载
+	 */
+	DownLoad,
+	/**
+	 * 上传
+	 */
+	UpLoad,
+	/**
+	 * 指令下发
+	 */
+	COMMAND,
+	/**
+	 * 访问页面内容
+	 */
+	PAGE,
+	/**
+	 * 接口调用
+	 */
+	API,
+	/**
+	 * 获取token
+	 */
+	TOKEN,
+	/**
+	 * 验证
+	 */
+	CHECK 	
 }

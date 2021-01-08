@@ -7,41 +7,41 @@ import java.util.Map;
 
 /**
  * 记录用户的操作记录
- * @author huzz
+ * @author xiaoyuge
  *
  */
 public class RequestLog implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
-	//创建日期
-	private String create_date;
+	private Integer id;
+	/**
+	 * 操作时间
+	 */
+	private String createDate;
+	/**
+	 * 操作人
+	 */
+	private String username;
+	/**
+	 * 操作类型：0，代表添加，1代表删除，2代表修改，3代表查看
+	 */
+	private String operatorType;
 
-	//创建人
-	private String create_man;
-
-	private boolean deleted;
-
-	//用户ID
-	private Integer user_id;
-	
-	//用户名
-	private String operater_username;
-	
-	//操作类型：0，代表添加，1代表删除，2代表修改，3代表查看
-	private String operater_type;
-	
 	//日志级别
-	private String log_type;
+	private String logType;
 	
 	//操作名称：例如数据上架，数据库下架等比较重要的步骤名称
-	private String name;
-	
+	private String module;
+	/**
+	 * 描述
+	 */
+	private String description;
+
 	//请求地址
-	private String remote_addr;
-	
+	private String remoteAddr;
+
 	//URI
-    private String request_uri;
+	private String requestUri;
     
     //请求方式
     private String method;            
@@ -52,91 +52,95 @@ public class RequestLog implements Serializable {
     //异常
 	private String exception;
 
-	public RequestLog() {
+
+	public String getCreateDate() {
+		return createDate;
 	}
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
 	}
 
-	public String getCreate_date() {
-		return create_date;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setCreate_date(String create_date) {
-		this.create_date = create_date;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getCreate_man() {
-		return create_man;
+	public String getOperatorType() {
+		return operatorType;
 	}
 
-	public void setCreate_man(String create_man) {
-		this.create_man = create_man;
+	public void setOperatorType(String operatorType) {
+		this.operatorType = operatorType;
 	}
 
-	public boolean isDeleted() {
-		return deleted;
+	public String getLogType() {
+		return logType;
 	}
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
+	public void setLogType(String logType) {
+		this.logType = logType;
 	}
 
-	public Integer getUser_id() {
-		return user_id;
+	public String getModule() {
+		return module;
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setModule(String module) {
+		this.module = module;
 	}
 
-	public String getOperater_username() {
-		return operater_username;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setOperater_username(String operater_username) {
-		this.operater_username = operater_username;
+	public Integer getId() {
+		return id;
 	}
 
-	public String getOperater_type() {
-		return operater_type;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setOperater_type(String operater_type) {
-		this.operater_type = operater_type;
+	@Override
+	public String toString() {
+		return "RequestLog{" +
+				"id=" + id +
+				", createDate='" + createDate + '\'' +
+				", username='" + username + '\'' +
+				", operatorType='" + operatorType + '\'' +
+				", logType='" + logType + '\'' +
+				", module='" + module + '\'' +
+				", description='" + description + '\'' +
+				", remoteAddr='" + remoteAddr + '\'' +
+				", requestUri='" + requestUri + '\'' +
+				", method='" + method + '\'' +
+				", params='" + params + '\'' +
+				", exception='" + exception + '\'' +
+				'}';
 	}
 
-	public String getLog_type() {
-		return log_type;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void setLog_type(String log_type) {
-		this.log_type = log_type;
+	public String getRemoteAddr() {
+		return remoteAddr;
 	}
 
-	public String getName() {
-		return name;
+	public void setRemoteAddr(String remoteAddr) {
+		this.remoteAddr = remoteAddr;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getRequestUri() {
+		return requestUri;
 	}
 
-	public String getRemote_addr() {
-		return remote_addr;
-	}
-
-	public void setRemote_addr(String remote_addr) {
-		this.remote_addr = remote_addr;
-	}
-
-	public String getRequest_uri() {
-		return request_uri;
-	}
-
-	public void setRequest_uri(String request_uri) {
-		this.request_uri = request_uri;
+	public void setRequestUri(String requestUri) {
+		this.requestUri = requestUri;
 	}
 
 	public String getMethod() {
@@ -180,22 +184,4 @@ public class RequestLog implements Serializable {
 		this.exception = exception;
 	}
 
-	@Override
-	public String toString() {
-		return "RequestLog{" +
-				"create_date=" + create_date +
-				", create_man='" + create_man + '\'' +
-				", deleted=" + deleted +
-				", user_id=" + user_id +
-				", operater_username='" + operater_username + '\'' +
-				", operater_type='" + operater_type + '\'' +
-				", log_type='" + log_type + '\'' +
-				", name='" + name + '\'' +
-				", remote_addr='" + remote_addr + '\'' +
-				", request_uri='" + request_uri + '\'' +
-				", method='" + method + '\'' +
-				", params='" + params + '\'' +
-				", exception='" + exception + '\'' +
-				'}';
-	}
 }

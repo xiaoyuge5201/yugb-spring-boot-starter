@@ -22,39 +22,35 @@ public class RequestLogDao {
     public void save(RequestLog requestLog) {
         String sql = "INSERT INTO `t_log` (\n" +
                 "\t`create_date`,\n" +
-                "\t`create_man`,\n" +
-                "\t`deleted`,\n" +
-                "\t`user_id`,\n" +
-                "\t`operater_username`,\n" +
+                "\t`username`,\n" +
                 "\t`operater_type`,\n" +
                 "\t`log_type`,\n" +
-                "\t`name`,\n" +
+                "\t`module`,\n" +
+                "\t`description`,\n" +
                 "\t`remote_addr`,\n" +
                 "\t`request_uri`,\n" +
                 "\t`method`,\n" +
                 "\t`params`,\n" +
                 "\t`exception`\n" +
                 ")\n" +
-                "VALUES(?,?,?, ?, ?,?,?,?,?,?,?,?,?)";
+                "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement prep = null;
         ResultSet rs = null;
         try {
             conn = JdbcClient.getConnection();
             prep = conn.prepareStatement(sql);
-            prep.setString(1, requestLog.getCreate_date());
-            prep.setString(2, requestLog.getCreate_man());
-            prep.setBoolean(3, false);
-            prep.setInt(4, requestLog.getUser_id());
-            prep.setString(5, requestLog.getOperater_username());
-            prep.setString(6, requestLog.getOperater_type());
-            prep.setString(7, requestLog.getLog_type());
-            prep.setString(8, requestLog.getName());
-            prep.setString(9, requestLog.getRemote_addr());
-            prep.setString(10, requestLog.getRequest_uri());
-            prep.setString(11, requestLog.getMethod());
-            prep.setString(12, requestLog.getParams());
-            prep.setString(13, requestLog.getException());
+            prep.setString(1, requestLog.getCreateDate());
+            prep.setString(2, requestLog.getUsername());
+            prep.setString(3, requestLog.getOperatorType());
+            prep.setString(4, requestLog.getLogType());
+            prep.setString(5, requestLog.getModule());
+            prep.setString(6, requestLog.getDescription());
+            prep.setString(7, requestLog.getRemoteAddr());
+            prep.setString(8, requestLog.getRequestUri());
+            prep.setString(9, requestLog.getMethod());
+            prep.setString(10, requestLog.getParams());
+            prep.setString(11, requestLog.getException());
             prep.execute();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -12,32 +12,28 @@ import java.lang.annotation.*;
  * @author hzz
  */
 
-@Target({ElementType.PARAMETER, ElementType.METHOD, ElementType.TYPE})
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
 public @interface YgbLog {
 
     /**
-     * 日志记录的事件名称，自定义业务名称或特定名称都行
+     * 模块名称
      *
      * @return 返回结果
      */
-    String name();
+    String module() default "";
+
+    /**
+     * 描述
+     * @return
+     */
+    String desc() default "";
 
     /**
      * 操作类型，增删改查
      * @return 返回结果
      */
     OperatorType type();
-    /**
-     * 操作用户名
-     * @return 返回结果
-     */
-    String username();
-    /**
-     * 用户id
-     * @return 返回结果
-     */
-    int userId();
 }
