@@ -6,9 +6,9 @@
 
     <groupId>com.github.xiaoyuge5201</groupId>
     <artifactId>yugb-spring-boot-starter</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
-    <description>A demo for Log</description>
+    <description>Collecting system log through AOP</description>
     <url>https://github.com/xiaoyuge5201/yugb-spring-boot-starter</url>
     <properties>
         <!--project-->
