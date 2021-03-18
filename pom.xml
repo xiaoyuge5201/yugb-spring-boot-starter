@@ -6,7 +6,7 @@
 
     <groupId>com.github.xiaoyuge5201</groupId>
     <artifactId>yugb-spring-boot-starter</artifactId>
-    <version>1.1</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
     <description>Collecting system log through AOP</description>
     <url>https://github.com/xiaoyuge5201/yugb-spring-boot-starter</url>
@@ -116,13 +116,10 @@
         <developer>
             <name>yugb666</name>
             <email>yugb666@foxmail.com</email>
-            <organization>xiaoyuge</organization>
         </developer>
         <developer>
             <name>xiaoyuge</name>
             <email>yugb666@foxmail.com</email>
-            <organization>Yugb5201314.</organization>
-            <organizationUrl>http://www.sonatype.com</organizationUrl>
         </developer>
     </developers>
     <profiles>
